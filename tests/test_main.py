@@ -72,6 +72,8 @@ def test_get_data_returns_first_product_title(mocker):
     ]
 
     # Replace requests.get with our mock
+    # Because of this line (mocker.patch...): Replace requests.get inside src.main with a fake function.
+    # That's why instead of calling the real API (requests.get(url)) it will now return: mock_response
     mocker.patch("src.main.requests.get", return_value=mock_response)
     result = get_data(TEST_URL)
 
